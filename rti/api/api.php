@@ -33,6 +33,7 @@
         };
     }elseif ($_SERVER['REQUEST_METHOD'] == "GET") {
         //echo "Recebi um GET";
+        //file existes
         if(isset($_GET['nome'])){
             for($index=0;$index<sizeof($arrayFicheiros);$index++){
                 if($_GET['nome'] == $arrayFicheiros[$index]){
@@ -40,7 +41,7 @@
                 }
             }
             
-            if($booleanficheiros == true){
+            if(is_dir("files/".$_GET['nome'])){
                 $nome = "files/".$_GET['nome']."/valor.txt";
                 echo file_get_contents($nome)."º"; 
             } else{
